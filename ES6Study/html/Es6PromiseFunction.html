@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+    <script type="text/javascript">
+        /**
+         * 所谓promise,简单来说就是一个容器,里面保存着某个未来才会结束的事件(通常是一个异步操作)
+         * 的结果
+         * promise对象特点:
+         * (1)对象的状态不受外界影响.promise对象代表一个异步操作,有三种状态:pending(进行中),fulfilled(已成功),
+         * 和rejected(已失败).只有异步操作的结果,可以决定当前是哪一种状态,任何其他操作都无法改变这个状态
+         * (2)一旦状态改变，就不会再变,任何时候都可以得到这个结果,promise对象的状态,只有两种可能:从pending变为
+         * fulfilled和从pending变为rejected.只要这两种情况发生,状态就凝固了,不会再变了，会一直保持这个结果，这时就
+         * 称为resolved(已定型).如果这个改变已经发生了,再对promise对象添加回调函数,也会立即得到这个结果,这与事件(event)
+         * 完全不同,事件的特点是,如果你错过了它,再去监听,是得不到结果的
+         *
+         * promise缺点:
+         * (1)无法取消promise,一旦新建就会立即执行,无法中途取消,
+         * (2)其次,如果不设置回调函数,promise内部抛出的错误，不会反应到外部
+         * (3)当处于pending状态时,无法得知目前进展到哪一个阶段
+         *
+         *
+         * */
+
+        /**
+         * promise抛出一个错误,就被catch方法指定的回调函数捕获
+         * reject()方法的作用,等同于抛出错误
+         * 如果promise状态已经变成resolved,再次抛出错误是无效的
+         * promise对象的错误具有'冒泡'性质,会一直向后传递,知道被捕获为止,也就是说
+         * 错误总是会被下一个catch语句捕获
+         * 一般来说,不要在then方法里面定义reject状态的回调函数(即then的第二个参数),总是使用catch方法
+         *
+         * catch方法
+         * 与传统的try/catch不同的是,如果没有使用catch方法指定错误处理的回调函数,Promise对象抛出的错误
+         * 不会传递到外层代码,即不会有任何反应 promise会'吃掉'错误
+         * 建议promise对象后面要跟catch方法,这样可以处理promise函数内部发生的错误,catch方法返回的还是一个
+         * promise对象,因此后面还可以接着调用then方法
+         * catch方法中,还能再抛错误
+         *
+         * finally方法
+         * finally方法用于不管promise对象最后状态如何,都会执行的操作
+         * finally方法里面的操作与状态无关,不依赖于promise的执行结果
+         * finally本质上是then方法的特例
+         * finally总是会返回原来的值
+         *
+         * all方法
+         * all用于将多个promise实例，包装成一个新的promise实例
+         * all接收一个数组作为参数,p1,p2,p3都是promise实例,如果不是,
+         * 就会先调用promise.resolve方法，将参数转为promise实例再处理(promise.all方法的参数可以不是数组
+         * ,但必须具有iterator接口,且返回的每个成员)
+         *
+         */
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

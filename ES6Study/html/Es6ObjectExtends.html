@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的拓展</title>
+    <link rel="stylesheet"/>
+
+    <script type="text/javascript">
+        /**
+         * es6允许直接写入变量和函数,作为对象的属性和方法,这样的书写更加简洁
+         * es6允许在对象之中，直接写变量，这时，属性名为变量名，属性值为变量的值
+         * 除了属性可以简写，方法也可以简写
+         *
+         */
+        // let brithday='2018-6-19';
+        // const Person={
+        //     name:"rui",
+        //     brithday,   //等同于{birth:'2018-6-19'}
+        //     hello(){
+        //         console.log('what the fuck')
+        //     }
+        // };
+
+        /**
+         * 属性名表达式
+         * js定义对象的属性，有两种方法
+         * 方法一: 直接用标识符作为属性名
+         * obj.foo=true
+         * 方法二: 用表达式作为属性名,需要将表达式放在方括号内
+         * obj['a']=123
+         * 如果使用字面量方式定义对象(使用大括号),在es5中只能使用方法一(标识符)定义属性
+         */
+        // let lastWord='last word';
+        // const a={
+        //     'first word':'hello',
+        //     [lastWord]:'world'
+        // };
+        //表达式还可以用于定义方法名
+        // let obj={
+        //     ['h'+'ello'](){
+        //         return 'hi';
+        //     }
+        // };
+        // console.log(obj.hello())
+        //属性表达式与简洁表示法,不能同时使用,会报错
+        //属性表达式如果是一个对象,默认情况下会自动将对象转为字符串[object,object]
+        /**
+         * 方法的name属性
+         * 函数的name属性，返回函数名，对象方法也是函数，因此也有name属性
+         * 两种特殊情况:
+         * bind方法创造的函数，name属性返回bound加上原函数的名字
+         * function构造函数创造的函数，name属性返回anonymous
+         *
+         * 如果对象是一个Symbol值,那么
+         *
+         */
+        function demo() {
+            let arr = [-1,0,1,2,-1,-4];
+            //排序一下
+            arr.sort(function (a,b){
+                return a-b;
+            });
+
+            console.log(arr);
+            let set=new Set();
+            //遍历
+            for(let i=0;i<arr.length;i++){
+                let next=arr[i];
+                let head=i+1;
+                let tail=arr.length-1;
+                while (head < tail) {
+                    let sum = next + arr[head] + arr[tail];
+                    if (sum < 0) {
+                        head++;
+                    } else if (sum > 0) {
+                        tail--;
+                    } else {
+                        let temArr=[];
+                        temArr.push(next);
+                        temArr.push(arr[head]);
+                        temArr.push(arr[tail]);
+                        set.add(temArr);
+                        head++;
+                        tail--;
+                    }
+                }
+            }
+            console.log(set)
+            console.log(Array.from(set).sort())
+        }
+        demo()
+    </script>
+</head>
+<body>
+
+</body>
+</html>
